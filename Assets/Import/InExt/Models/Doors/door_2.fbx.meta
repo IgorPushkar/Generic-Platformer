@@ -1,0 +1,113 @@
+fileFormatVersion: 2
+guid: e37b4d04a66766a42afed2fa7f947d65
+timeCreated: 1451091654
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Door_2_cap
+    100004: door_2_clamps_left
+    100006: door_2_clamps_right
+    100008: Door_2_door
+    100010: Door_2_frame
+    100012: Door_2_hologram
+    100014: door_2_pistons_left
+    100016: door_2_pistons_right
+    400000: //RootNode
+    400002: Door_2_cap
+    400004: door_2_clamps_left
+    400006: door_2_clamps_right
+    400008: Door_2_door
+    400010: Door_2_frame
+    400012: Door_2_hologram
+    400014: door_2_pistons_left
+    400016: door_2_pistons_right
+    2300000: Door_2_cap
+    2300002: door_2_clamps_left
+    2300004: door_2_clamps_right
+    2300006: Door_2_door
+    2300008: Door_2_frame
+    2300010: Door_2_hologram
+    2300012: door_2_pistons_left
+    2300014: door_2_pistons_right
+    3300000: Door_2_cap
+    3300002: door_2_clamps_left
+    3300004: door_2_clamps_right
+    3300006: Door_2_door
+    3300008: Door_2_frame
+    3300010: Door_2_hologram
+    3300012: door_2_pistons_left
+    3300014: door_2_pistons_right
+    4300000: door_2_clamps_right
+    4300002: door_2_clamps_left
+    4300004: door_2_pistons_right
+    4300006: door_2_pistons_left
+    4300008: Door_2_door
+    4300010: Door_2_hologram
+    4300012: Door_2_cap
+    4300014: Door_2_frame
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
