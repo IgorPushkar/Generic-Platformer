@@ -15,26 +15,22 @@ public class LevelsList : MonoBehaviour {
 	const string BASIC_LEVEL_04 = "02a Level 04";
 	const string BASIC_LEVEL_05 = "02a Level 05";
 	const string BASIC_LEVEL_06 = "02a Level 06";
-	const string BASIC_LEVEL_07 = "02a Level 07";
-	const string BASIC_LEVEL_08 = "02a Level 08";
 
 	public static string[] GetBasicLevels(){
-		string[] levels = new string[8] {
+		string[] levels = new string[6] {
 			BASIC_LEVEL_01,
 			BASIC_LEVEL_02,
 			BASIC_LEVEL_03,
 			BASIC_LEVEL_04,
 			BASIC_LEVEL_05,
-			BASIC_LEVEL_06,
-			BASIC_LEVEL_07,
-			BASIC_LEVEL_08
+			BASIC_LEVEL_06
 		};
 
 		return levels;
 	}
 
 	public static string[] GetAllLevels(){
-		string[] levels = new string[13] {
+		string[] levels = new string[11] {
 			SPLASH,
 			START,
 			SETTINGS,
@@ -45,9 +41,7 @@ public class LevelsList : MonoBehaviour {
 			BASIC_LEVEL_03,
 			BASIC_LEVEL_04,
 			BASIC_LEVEL_05,
-			BASIC_LEVEL_06,
-			BASIC_LEVEL_07,
-			BASIC_LEVEL_08
+			BASIC_LEVEL_06
 		};
 
 		return levels;
