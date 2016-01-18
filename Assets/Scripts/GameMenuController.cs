@@ -52,7 +52,7 @@ public class GameMenuController : MonoBehaviour {
 		menuButton.interactable = false;
 		yesAction = new UnityAction (OnRestartYes);
 		string question = "Restart level?";
-		modalPanel.Choise (question, yesAction, noAction);
+		modalPanel.Choice (question, yesAction, noAction);
 	}
 
 	void OnRestartYes(){
@@ -64,7 +64,7 @@ public class GameMenuController : MonoBehaviour {
 		menuButton.interactable = false;
 		yesAction = new UnityAction (OnBackYes);
 		string question = "Want to give up?";
-		modalPanel.Choise (question, yesAction, noAction);
+		modalPanel.Choice (question, yesAction, noAction);
 	}
 
 	void OnBackYes(){

@@ -23,7 +23,9 @@ public class PlayerController : MonoBehaviour {
 	//SFX & Animation
 	public float barSpeed;
 	public GameObject FX, jetBeam, flames;
+	public AudioClip[] sounds;
 
+	private AudioSource audioSource;
 	private ParticleSystem[] flamesFX;
 	private ParticleSystem[] jetBeamFX;
 	private Animator anim;
@@ -83,6 +85,7 @@ public class PlayerController : MonoBehaviour {
 		scoreText = FindObjectOfType<UIManager> ().GetScoreText ();
 		platform = Application.platform;
 		controller = GetComponent<CharacterController>();
+		audioSource = GetComponent<AudioSource> ();
 		anim = GetComponent<Animator> ();
 		fuel = 100f;
 		energy = 100f;
@@ -102,8 +105,10 @@ public class PlayerController : MonoBehaviour {
 
 	void Update () {
 
-		if (Time.timeScale > 0) {
-
+		if(Time.timeScale <= 0){
+			audioSource.Pause ();
+		} else {
+			
 			if (energy > 0) {
 				shieldSphere.enabled = true;
 			} else {
@@ -118,6 +123,11 @@ public class PlayerController : MonoBehaviour {
 					Unjet ();
 					anim.SetBool ("inAir", false);
 					anim.SetBool ("jump", false);
+					if(!audioSource.isPlaying || audioSource.clip != sounds [0]){
+						audioSource.loop = true;
+						audioSource.clip = sounds [0];
+						audioSource.Play ();	
+					}
 				} else {
 					anim.SetBool ("inAir", true);
 //			anim.SetBool ("jump", false);
@@ -200,6 +210,9 @@ public class PlayerController : MonoBehaviour {
 		moveDirection.y = jump;
 		anim.SetBool ("jump", true);
 		anim.SetBool ("inAir", true);
+		audioSource.loop = false;
+		audioSource.clip = sounds [1];
+		audioSource.Play ();
 	}
 
 	void Jet(){
@@ -214,6 +227,11 @@ public class PlayerController : MonoBehaviour {
 			var em = system.emission;
 			em.enabled = true;
 		}
+		if (!audioSource.isPlaying || audioSource.clip != sounds [2]) {
+			audioSource.loop = true;
+			audioSource.clip = sounds [2];
+			audioSource.PlayOneShot (sounds [2]);
+		}
 	}
 
 	void Unjet(){
@@ -224,6 +242,9 @@ public class PlayerController : MonoBehaviour {
 		foreach (ParticleSystem system in jetBeamFX) {
 			var em = system.emission;
 			em.enabled = false;
+		}
+		if (audioSource.isPlaying && audioSource.clip == sounds [2]) {
+			audioSource.Stop ();
 		}
 	}
 

@@ -27,7 +27,7 @@ public class ModalPanel : MonoBehaviour {
 		transform.SetAsLastSibling ();
 	}
 
-	public void Choise(string question, UnityAction yesEvent, UnityAction noEvent){
+	public void Choice(string question, UnityAction yesEvent, UnityAction noEvent){
 		modalPanelObject.SetActive (true);
 		modalPanel.
 
@@ -45,7 +45,7 @@ public class ModalPanel : MonoBehaviour {
 		noButton.gameObject.SetActive (true);
 	}
 
-	public void Choise(string question, UnityAction yesEvent){
+	public void Choice(string question, UnityAction yesEvent){
 		modalPanelObject.SetActive (true);
 		modalPanel.
 

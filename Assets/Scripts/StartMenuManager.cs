@@ -25,7 +25,7 @@ public class StartMenuManager : MonoBehaviour {
 	public void OnQuitClick(){
 		yesAction = new UnityAction (OnQuitYes);
 		string question = "Quit game?";
-		modalPanel.Choise(question, yesAction);
+		modalPanel.Choice(question, yesAction);
 	}
 
 	void OnQuitYes(){

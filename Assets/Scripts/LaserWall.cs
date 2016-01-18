@@ -28,6 +28,10 @@ public class LaserWall : MonoBehaviour {
 		line.material.mainTextureOffset = new Vector2 (-0.5f * Time.time, 0);
 	}
 
+	void OnTriggerEnter(Collider other){
+//		GetComponent<AudioSource> ().Play ();
+	}
+
 	void OnTriggerStay (Collider other){
 		if(other.CompareTag("Drone")) return;
 		LaserHit (other);
@@ -35,6 +39,7 @@ public class LaserWall : MonoBehaviour {
 
 	void OnTriggerExit(Collider other){
 		ResetLaser();
+//		GetComponent<AudioSource> ().Stop();
 	}
 
 	void LaserHit (Collider other){

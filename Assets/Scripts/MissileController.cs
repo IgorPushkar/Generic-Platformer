@@ -56,6 +56,7 @@ public class MissileController : MonoBehaviour {
 	public void Trigger(){
 		origin = new Vector3 (0, transform.position.y + 1f, transform.position.z);
 		triggered = true;
+		GetComponent<AudioSource> ().Play ();
 	}
 
 	public void Terminate(){

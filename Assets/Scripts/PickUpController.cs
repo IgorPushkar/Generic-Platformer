@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof (AudioSource))]
 public class PickUpController : MonoBehaviour {
 
 	public GameObject flash;
@@ -35,6 +36,7 @@ public class PickUpController : MonoBehaviour {
 			isPicked = true;
 			Invoke ("SpawnFlash", 0.5f);
 			Destroy (gameObject, 1f);
+			GetComponent<AudioSource> ().Play ();
 		}
 	}
 	
