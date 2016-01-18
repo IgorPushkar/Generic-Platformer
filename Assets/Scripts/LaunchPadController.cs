@@ -15,7 +15,7 @@ public class LaunchPadController : MonoBehaviour {
 			switch (type) {
 			case Type.Ceiling:
 				try {
-					GetComponentInChildren<MissileController> ().Trigger (col.gameObject, transform.position);
+					GetComponentInChildren<MissileController> ().Trigger ();
 					transform.DetachChildren ();
 				} catch (Exception exc) {
 					Debug.Log (exc.Message);
@@ -23,7 +23,7 @@ public class LaunchPadController : MonoBehaviour {
 				break;
 			case Type.Floor:
 				try {
-					GetComponentInChildren<MissileController> ().Trigger (col.gameObject, transform.position);
+					GetComponentInChildren<MissileController> ().Trigger ();
 					transform.DetachChildren ();
 				} catch (Exception exc) {
 					Debug.Log (exc.Message);
