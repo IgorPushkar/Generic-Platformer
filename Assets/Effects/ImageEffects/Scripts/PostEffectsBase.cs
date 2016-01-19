@@ -107,7 +107,7 @@ namespace UnityStandardAssets.ImageEffects
             }
 
             if (needDepth)
-                GetComponent<Camera>().depthTextureMode |= DepthTextureMode.Depth;
+				GetComponent<Camera>().depthTextureMode |= DepthTextureMode.Depth;
 
             return true;
         }

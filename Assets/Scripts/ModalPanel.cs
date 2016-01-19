@@ -29,7 +29,6 @@ public class ModalPanel : MonoBehaviour {
 
 	public void Choice(string question, UnityAction yesEvent, UnityAction noEvent){
 		modalPanelObject.SetActive (true);
-		modalPanel.
 
 		yesButton.onClick.RemoveAllListeners ();
 		yesButton.onClick.AddListener (yesEvent);
@@ -47,7 +46,6 @@ public class ModalPanel : MonoBehaviour {
 
 	public void Choice(string question, UnityAction yesEvent){
 		modalPanelObject.SetActive (true);
-		modalPanel.
 
 		yesButton.onClick.RemoveAllListeners ();
 		yesButton.onClick.AddListener (yesEvent);

@@ -4,6 +4,7 @@ using System.Collections;
 public class MusicManager : MonoBehaviour {
 
 	public AudioClip[] clips;
+	public AudioClip UIClip;
 
 	private AudioSource source;
 
@@ -34,5 +35,9 @@ public class MusicManager : MonoBehaviour {
 
 	public void ToggleMusic(bool flag){
 		source.enabled = flag;
+	}
+
+	public void UISoundPlay(){
+		source.PlayOneShot (UIClip);
 	}
 }

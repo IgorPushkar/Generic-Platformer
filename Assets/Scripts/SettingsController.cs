@@ -11,7 +11,7 @@ public class SettingsController : MonoBehaviour {
 	private MusicManager musicManager;
 
 	// Use this for initialization
-	void Start () { 
+	void Awake () { 
 		musicToggle = FindObjectOfType<SettingsManager> ().GetMusicToggle ();
 		musicSlider = FindObjectOfType<SettingsManager> ().GetMusicSlider ();
 		musicManager = FindObjectOfType<MusicManager> ();

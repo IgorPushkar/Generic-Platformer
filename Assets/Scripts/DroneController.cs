@@ -7,6 +7,8 @@ public class DroneController : MonoBehaviour {
 	//BEAM VARIABLES
 	public float fireRate;
 	public float shotDistance;
+	public AudioClip laserClip;
+	public AudioClip[] movementFX;
 
 	private float nextFire;
 	private bool inDanger; //does recently shooted
@@ -26,8 +28,10 @@ public class DroneController : MonoBehaviour {
 	private Quaternion newRot;
 	private BoxCollider bCollider; //box collider for missile detection
 	private Rigidbody rb;
+	private AudioSource audioSource;
 
 	void Start () {
+		audioSource = GetComponent<AudioSource> ();
 		bCollider = GetComponent<BoxCollider> ();
 		meshRend = GetComponentInChildren<MeshRenderer> ();
 		rb = GetComponent<Rigidbody> ();
@@ -37,6 +41,7 @@ public class DroneController : MonoBehaviour {
 		//initialize beam
 		lineRend = GetComponent<LineRenderer> ();
 		lineRend.enabled = false;
+		lineRend.SetVertexCount (2);
 		lineRend.SetPosition (0, transform.position);
 		lineRend.SetPosition (1, transform.position);
 		inDanger = false;
@@ -61,6 +66,12 @@ public class DroneController : MonoBehaviour {
 				Deactivate ();
 			}
 		}
+
+		if(Time.timeScale <= 0 ){
+			audioSource.Pause ();
+		} else {
+			audioSource.UnPause ();
+		}
 	}
 
 	//test line of sight to missile before shot
@@ -84,6 +95,8 @@ public class DroneController : MonoBehaviour {
 		Invoke ("Deactivate", activeTime);
 		PosRotChange ();
 		Destroy (gameObject, activeTime + 3f);
+		audioSource.Play ();
+
 	}
 
 	//change position/rotation at random
@@ -97,6 +110,9 @@ public class DroneController : MonoBehaviour {
 				newRot = Random.rotation;
 			}
 			inDanger = false;
+			int index = Random.Range (0, 2);
+			Debug.Log (index);
+			audioSource.PlayOneShot (movementFX [index]);
 		}
 		Invoke ("PosRotChange", Random.Range(3, 5));
 	}
@@ -125,6 +141,7 @@ public class DroneController : MonoBehaviour {
 						inDanger = true;
 						other.GetComponent<MissileController> ().Terminate ();
 						Invoke ("DisableLine", 0.05f);
+						audioSource.PlayOneShot (laserClip);
 					}
 				}
 			}

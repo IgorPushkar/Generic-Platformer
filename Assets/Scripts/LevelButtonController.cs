@@ -37,6 +37,7 @@ public class LevelButtonController : MonoBehaviour {
 	void StartLevel(string level){
 		loadingScreen.SetActive (true);
 		StartCoroutine (LoadingScreenAnimation(level));
+		FindObjectOfType<UISound> ().PlayUISound ();
 	}
 
 	IEnumerator LoadingScreenAnimation(string level){
