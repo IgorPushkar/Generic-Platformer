@@ -5,7 +5,8 @@ public class MissileController : MonoBehaviour {
 
 	private bool active, triggered;
 	private Vector3 offset;
-	private Vector3 origin;
+	private Vector3 playerPosition;
+	private Vector3 targetPosition;
 
 	public float speed;
 	public float damage;
@@ -20,9 +21,11 @@ public class MissileController : MonoBehaviour {
 	void Update () {
 
 		if (triggered && !active) {
-			transform.position = Vector3.MoveTowards (transform.position, origin, speed * Time.deltaTime);
-			if (transform.position == origin) {
+			transform.position = Vector3.MoveTowards (transform.position, targetPosition, speed * Time.deltaTime);
+			if (transform.position == playerPosition) {
 				active = true;
+			} else if (transform.position == targetPosition) {
+				targetPosition = playerPosition;
 			}
 		} 
 		if(active && Time.timeScale > 0f) {
@@ -49,12 +52,17 @@ public class MissileController : MonoBehaviour {
 		if (active) {
 			if (collision.collider.CompareTag ("Robot")) {
 				collision.collider.gameObject.GetComponentInParent<PlayerController> ().ApplyDamage (damage);
-			} Terminate ();
+			} else if (collision.collider.CompareTag ("Missile")) {
+				return;
+			}
+
+			Terminate ();
 		}
 	}
 
 	public void Trigger(){
-		origin = new Vector3 (0, transform.position.y + 1f, transform.position.z);
+		targetPosition = new Vector3 (transform.position.x, transform.position.y + 1f, transform.position.z);
+		playerPosition = new Vector3 (0, targetPosition.y, targetPosition.z);
 		triggered = true;
 		GetComponent<AudioSource> ().Play ();
 	}

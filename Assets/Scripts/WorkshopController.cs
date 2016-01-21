@@ -5,8 +5,10 @@ using System.Collections;
 public class WorkshopController : MonoBehaviour {
 
 	public Text partsCount;
+	public Sprite droneNeutral;
 	public Sprite dronePositive;
 	public Sprite droneNegative;
+	public Sprite magnetNeutral;
 	public Sprite magnetPositive;
 	public Sprite magnetNegative;
 	public Button droneButton;
@@ -30,6 +32,9 @@ public class WorkshopController : MonoBehaviour {
 		} else if (PlayerPrefsManager.GetScore () < 450){
 			droneImage.sprite = droneNegative;
 			droneButton.interactable = false;
+		} else {
+			droneImage.sprite = droneNeutral;
+			droneButton.interactable = true;
 		}
 	}
 
@@ -40,6 +45,9 @@ public class WorkshopController : MonoBehaviour {
 		} else if (PlayerPrefsManager.GetScore () < 200){
 			magnetImage.sprite = magnetNegative;
 			magnetButton.interactable = false;
+		} else {
+			magnetImage.sprite = magnetNeutral;
+			magnetButton.interactable = true;
 		}
 	}
 

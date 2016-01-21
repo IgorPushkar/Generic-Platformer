@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
 	public float speed;
 	public float jump;
 	public float jet;
+	public float maxJet;
 	public float gravity;
 
 	private bool isControlable;
@@ -132,17 +133,20 @@ public class PlayerController : MonoBehaviour {
 					anim.SetBool ("inAir", true);
 //			anim.SetBool ("jump", false);
 				}
+				moveDirection.z = speed;	
+				moveDirection.y -= controller.isGrounded ? 0 : gravity * Time.deltaTime;
+
 				if (isControlable) {
 					if (platform == RuntimePlatform.Android || platform == RuntimePlatform.IPhonePlayer) {
 						if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began && controller.isGrounded && !menu.Contains (Input.GetTouch (0).position)) {
 							Jump ();
 						} else if ((controller.collisionFlags & CollisionFlags.Above) != 0 && !controller.isGrounded && moveDirection.y > 0) {
 							moveDirection.y = 0f;
-						} else if (controller.velocity.y <= jet && Input.touchCount > 0 && fuel > 0 && (controller.collisionFlags & CollisionFlags.Above) == 0 && !menu.Contains (Input.GetTouch (0).position)) {
+						} else if (controller.velocity.y <= maxJet && Input.touchCount > 0 && fuel > 0 && (controller.collisionFlags & CollisionFlags.Above) == 0 && !menu.Contains (Input.GetTouch (0).position)) {
 							Jet ();
 						} else if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Ended) {
 							Unjet ();
-						} else if (Input.touchCount == 0 || controller.velocity.y < jet || fuel <= 0) {
+						} else if (Input.touchCount == 0 || controller.velocity.y < maxJet || fuel <= 0) {
 							Unjet ();
 						}
 					} else {
@@ -150,9 +154,9 @@ public class PlayerController : MonoBehaviour {
 							Jump ();
 						} else if ((controller.collisionFlags & CollisionFlags.Above) != 0 && !controller.isGrounded && moveDirection.y > 0) {
 							moveDirection.y = 0f;
-						} else if (controller.velocity.y <= jet && Input.GetMouseButton (0) && fuel > 0	&& (controller.collisionFlags & CollisionFlags.Above) == 0 && !menu.Contains (Input.mousePosition)) {
+						} else if (controller.velocity.y <= maxJet && Input.GetMouseButton (0) && fuel > 0	&& (controller.collisionFlags & CollisionFlags.Above) == 0 && !menu.Contains (Input.mousePosition)) {
 							Jet ();
-						} else if (Input.GetMouseButtonUp (0) || controller.velocity.y < jet || fuel <= 0) {
+						} else if (Input.GetMouseButtonUp (0) || controller.velocity.y < maxJet || fuel <= 0) {
 							Unjet ();
 						}
 					}
@@ -169,8 +173,6 @@ public class PlayerController : MonoBehaviour {
 //					}
 //					magnetTimer -= Time.deltaTime;
 //				}
-				moveDirection.z = speed;	
-				moveDirection.y -= controller.isGrounded ? 0 : gravity * Time.deltaTime;
 				if (!isDead)
 					controller.Move (moveDirection * Time.deltaTime);
 
@@ -216,7 +218,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Jet(){
-		moveDirection.y = jet;
+		moveDirection.y += jet * Time.deltaTime;
 		fuel -= fuelLossRate * Time.deltaTime;
 		fuel = Mathf.Clamp (fuel, 0, 100);
 		foreach (ParticleSystem system in flamesFX) {
