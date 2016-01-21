@@ -43,7 +43,10 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public void LoadLevelSelect(){
-		SceneManager.LoadScene ("01c Level Select");
+		//SceneManager.LoadScene ("01c Level Select");
+		SceneManager.LoadScene ("01a Start");
+		GameObject obj = new GameObject ();
+		obj.AddComponent<ToLevelSelectSwitcher> ();
 	}
 
 	public void QuitRequest(){

@@ -6,9 +6,9 @@ public class LevelsList : MonoBehaviour {
 
 	const string SPLASH = "00 Splash";
 	const string START = "01a Start";
-	const string SETTINGS = "01b Settings";
-	const string LEVEL_SELECT = "01c Level Select";
-	const string WORKSHOP = "01d Workshop";
+//	const string SETTINGS = "01b Settings";
+//	const string LEVEL_SELECT = "01c Level Select";
+//	const string WORKSHOP = "01d Workshop";
 	const string BASIC_LEVEL_01 = "02a Level 01";
 	const string BASIC_LEVEL_02 = "02a Level 02";
 	const string BASIC_LEVEL_03 = "02a Level 03";
@@ -30,12 +30,12 @@ public class LevelsList : MonoBehaviour {
 	}
 
 	public static string[] GetAllLevels(){
-		string[] levels = new string[11] {
+		string[] levels = new string[8] {
 			SPLASH,
 			START,
-			SETTINGS,
-			LEVEL_SELECT,
-			WORKSHOP,
+//			SETTINGS,
+//			LEVEL_SELECT,
+//			WORKSHOP,
 			BASIC_LEVEL_01,
 			BASIC_LEVEL_02,
 			BASIC_LEVEL_03,

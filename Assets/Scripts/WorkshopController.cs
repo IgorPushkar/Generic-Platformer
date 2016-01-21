@@ -59,7 +59,7 @@ public class WorkshopController : MonoBehaviour {
 		}
 	}
 
-	void UpdateScene(){
+	public void UpdateScene(){
 		SetupPartsText ();
 		SetupDroneButton ();
 		SetupMagnetButton ();

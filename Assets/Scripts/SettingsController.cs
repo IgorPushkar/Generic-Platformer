@@ -44,6 +44,8 @@ public class SettingsController : MonoBehaviour {
 
 	public void ResetGame(){
 		PlayerPrefs.DeleteAll ();
+		FindObjectOfType<LevelButtonController> ().BuildGrid ();
+		FindObjectOfType<WorkshopController> ().UpdateScene ();
 	}
 
 	public void UnlockAllLevels(){
@@ -51,6 +53,7 @@ public class SettingsController : MonoBehaviour {
 			PlayerPrefsManager.SetBasicLevelState ("0" + (i + 1).ToString ());
 		}
 		PlayerPrefsManager.SetBasicLevelState ("10");
+		FindObjectOfType<LevelButtonController> ().BuildGrid ();
 	}
 
 	public void SetDrone(){
@@ -63,5 +66,6 @@ public class SettingsController : MonoBehaviour {
 
 	public void AddParts(){
 		PlayerPrefsManager.SetScore (PlayerPrefsManager.GetScore () + 100);
+		FindObjectOfType<WorkshopController> ().UpdateScene ();
 	}
 }
