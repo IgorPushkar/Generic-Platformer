@@ -7,7 +7,7 @@ public class RandomRotator : MonoBehaviour {
 	private Vector3 rotation;
 	// Use this for initialization
 	void Start () {
-		rotation = new Vector3 (0.67f, 0.39f, 0.21f);
+		rotation = new Vector3 (35f, 20f, 15f);
 	}
 	
 	// Update is called once per frame
