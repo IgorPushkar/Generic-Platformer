@@ -282,6 +282,7 @@ public class PlayerController : MonoBehaviour {
 			break;
 		case "Score":
 			score += (int)ammount;
+			score = Mathf.Clamp (score, 0, 9999);
 			scoreText.text = score.ToString ();
 			break;
 		}

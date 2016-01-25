@@ -13,7 +13,7 @@ public class RandomRotator : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Time.timeScale > 0) {
-			transform.Rotate (rotation);
+			transform.Rotate (rotation * Time.deltaTime);
 		}
 	}
 }
