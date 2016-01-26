@@ -56,12 +56,9 @@ public class LevelManager : MonoBehaviour {
 	public void UnlockNextLevel(){
 		if (SceneManager.GetActiveScene ().buildIndex + 1 < SceneManager.sceneCountInBuildSettings) {
 			string level = SceneManager.GetActiveScene ().name;
-			string bundleID = level.Substring (0, 3);
 			int levelNum = int.Parse (level.Substring (level.Length - 2)) + 1;
 			string newLevelNum = levelNum > 9 ? levelNum.ToString () : "0" + levelNum.ToString ();
-			if (bundleID == "02a") {
-				PlayerPrefsManager.SetBasicLevelState (newLevelNum);
-			}
+			PlayerPrefsManager.SetLevelState (newLevelNum);
 		}
 	}
 }

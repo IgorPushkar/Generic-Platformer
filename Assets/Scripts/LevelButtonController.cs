@@ -32,7 +32,7 @@ public class LevelButtonController : MonoBehaviour {
 			string level = "02a Level " + levelString;
 			Button newButton = obj.GetComponent<Button> ();
 			newButton.onClick.AddListener (() => StartLevel (level));
-			newButton.interactable = PlayerPrefsManager.GetBasicLevelState (levelString);
+			newButton.interactable = PlayerPrefsManager.GetLevelState (levelString);
 		}
 	}
 

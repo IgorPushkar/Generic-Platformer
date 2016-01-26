@@ -8,7 +8,8 @@ public class PlayerPrefsManager : MonoBehaviour {
 	const string SCORE_KEY = "score";
 	const string MAGNET_KEY = "magnet";
 	const string DRONE_KEY = "drone";
-	const string BASIC_LEVEL_KEY = "basic_level_unlocked_";
+	const string LEVEL_KEY = "level_unlocked_";
+	const string LEVEL_PICKUPS = "level_pickups_";
 
 	#region Master_volume
 	public static void SetMasterVolume (float volume){
@@ -90,24 +91,46 @@ public class PlayerPrefsManager : MonoBehaviour {
 	#endregion
 
 	#region Levels
-	public static void SetBasicLevelState (string level){
+	public static void SetLevelState (string level){
 		int i;
 		if (int.TryParse(level, out i)) {
-			PlayerPrefs.SetInt (BASIC_LEVEL_KEY + level, 1);
+			PlayerPrefs.SetInt (LEVEL_KEY + level, 1);
 		} else {
 			Debug.LogError ("Level is in wrong format");
 		}
 	}
 
-	public static bool GetBasicLevelState (string level){
+	public static bool GetLevelState (string level){
 		int i;
 		if(!int.TryParse(level, out i)){
 			Debug.LogError ("Level is in wrong format");
 		}
-		if (!PlayerPrefs.HasKey (BASIC_LEVEL_KEY + level) && level == "01") {
-			SetBasicLevelState (level);
+		if (!PlayerPrefs.HasKey (LEVEL_KEY + level) && level == "01") {
+			SetLevelState (level);
 		} 
-		return PlayerPrefs.GetInt (BASIC_LEVEL_KEY + level) == 1 ? true : false;
+		return PlayerPrefs.GetInt (LEVEL_KEY + level) == 1 ? true : false;
+	}
+	#endregion
+
+	#region level_pickups
+	public static void SetLevelPickups (string level, string itemsData){
+		int i;
+		if (int.TryParse(level, out i)) {
+			PlayerPrefs.SetString (LEVEL_PICKUPS + level, itemsData);
+		} else {
+			Debug.LogError ("Level is in wrong format");
+		}
+	}
+
+	public static string GetLevelPickups (string level){
+		int i;
+		if(!int.TryParse(level, out i)){
+			Debug.LogError ("Level is in wrong format");
+		}
+		if (!PlayerPrefs.HasKey (LEVEL_PICKUPS + level)) {
+			return "";
+		} 
+		return PlayerPrefs.GetString (LEVEL_PICKUPS + level);
 	}
 	#endregion
 }

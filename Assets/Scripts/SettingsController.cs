@@ -50,9 +50,9 @@ public class SettingsController : MonoBehaviour {
 
 	public void UnlockAllLevels(){
 		for(int i = 0; i <10; i++){
-			PlayerPrefsManager.SetBasicLevelState ("0" + (i + 1).ToString ());
+			PlayerPrefsManager.SetLevelState ("0" + (i + 1).ToString ());
 		}
-		PlayerPrefsManager.SetBasicLevelState ("10");
+		PlayerPrefsManager.SetLevelState ("10");
 		FindObjectOfType<LevelButtonController> ().BuildGrid ();
 	}
 

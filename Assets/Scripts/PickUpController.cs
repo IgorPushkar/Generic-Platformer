@@ -1,42 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent (typeof (AudioSource))]
 public class PickUpController : MonoBehaviour {
 
 	public GameObject flash;
 	public float rotationSpeed;
 	public int ammount;
 
-	private bool isPicked;
-	private Vector3 scaleModifier;
-
 	void Start(){
 		transform.rotation = Random.rotation;
-		isPicked = false;
-		scaleModifier = transform.localScale;
 	}
 
 	void Update(){
 		Vector3 newRot = new Vector3 (0, rotationSpeed * Time.deltaTime, 0);
 		transform.Rotate(newRot, Space.World);
-		if(isPicked){
-			transform.localScale -= scaleModifier * Time.deltaTime;
-		}
-	}
-
-	void SpawnFlash(){
-//		Vector3 offset = new Vector3 (0.1f, 0f, 0f);
-		Instantiate (flash, transform.position/* + offset*/, Quaternion.identity);
 	}
 
 	void OnTriggerEnter(Collider other){
 		if(other.CompareTag("Player") || other.CompareTag("Magnet")){
-			rotationSpeed = 720f;
-			isPicked = true;
-			Invoke ("SpawnFlash", 0.5f);
-			Destroy (gameObject, 1f);
-			GetComponent<AudioSource> ().Play ();
+			Instantiate (flash, transform.position/* + offset*/, Quaternion.identity);
+			FindObjectOfType<PickupsController> ().SetItemPicked (gameObject);
+			Destroy (gameObject);
 		}
 	}
 	

@@ -12,12 +12,13 @@ public class PlayerController : MonoBehaviour {
 	private CharacterController controller;
 	
 	//Movement
-	public float speed;
+	public float speedMax;
 	public float jump;
 	public float jet;
 	public float maxJet;
 	public float gravity;
 
+	private float speed;
 	private bool isControlable;
 	private Vector3 moveDirection = Vector3.zero;
 
@@ -78,6 +79,7 @@ public class PlayerController : MonoBehaviour {
 	}
 		
 	void Start () {
+		speed = speedMax;
 		immortal = false;
 		isControlable = false;
 		fuelBar = FindObjectOfType<UIManager> ().GetFuelBar ();
@@ -257,7 +259,13 @@ public class PlayerController : MonoBehaviour {
 		} else if (other.CompareTag ("Finish")) {
 			PlayerPrefsManager.SetScore (score);
 			levelManager.UnlockNextLevel ();
+			PickupsController pickups = FindObjectOfType<PickupsController> ();
+			if(pickups){
+				pickups.SaveItemsState ();
+			}
 			EndLevel ();
+		} else if (other.CompareTag ("Freeze")) {
+			speed = 0;
 		} else if (other.CompareTag ("Drone") && hasDrone) {
 			other.GetComponent<DroneController> ().Activate (gameObject);
 		} else if (other.CompareTag ("Magnet") && hasMagnet) {
@@ -266,6 +274,12 @@ public class PlayerController : MonoBehaviour {
 			ApplyGain("Score", other.gameObject.GetComponent<PickUpController> ().ammount);
 		} else if (other.CompareTag ("Void")) {
 			isDead = true;
+		}
+	}
+
+	void OnTriggerExit (Collider other){
+		if (other.CompareTag ("Freeze")) {
+			speed = speedMax;
 		}
 	}
 
